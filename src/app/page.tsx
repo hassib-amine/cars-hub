@@ -5,7 +5,7 @@ import { CarCard, SearchBar, CustomFilter } from "../../components";
 import ShowMore from "../../components/ShowMore";
 
 export default async function Home({ searchParams }: any) {
-  
+
   const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year || 2018,
@@ -36,8 +36,8 @@ export default async function Home({ searchParams }: any) {
         {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {allCars?.map((car) => (
-                <CarCard car={car} />
+              {allCars?.map((car, index) => (
+                <CarCard key={car.id || index} car={car} />
               ))}
             </div>
 
